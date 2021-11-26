@@ -24,13 +24,13 @@ interface Api {
 
     @GET("users/{name}/followers")
     @Headers("Authorization: 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")
-    fun geFollowers(
+    fun getFollowers(
         @Path("name") username : String
     ):Call<ArrayList<UserGitHub>>
 
     @GET("users/{name}/following")
     @Headers("Authorization: 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")
-    fun geFollowing(
+    fun getFollowing(
         @Path("name") username : String
     ):Call<ArrayList<UserGitHub>>
 }
