@@ -8,9 +8,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.mufidz.githubusersubmission2.databinding.ActivityDetailUserBinding
 
 class DetailUser : AppCompatActivity() {
-    companion object{
-        const val EXTRA_USERNAME = "extra_username"
-    }
 
     private lateinit var binding: ActivityDetailUserBinding
     private lateinit var viewModel: DetailUserViewModel
@@ -31,9 +28,9 @@ class DetailUser : AppCompatActivity() {
                 binding.apply {
                     tvNameDetail.text = it.name
                     tvUsername.text = it.login
-                    jmlFollower.text = "${it.followers}"
-                    jmlFollowing.text = "${it.following}"
-                    jmlRepository.text = "${it.public_repos}"
+                    jmlFollower.text = it.followers.toString()
+                    jmlFollowing.text = it.following.toString()
+                    jmlRepository.text = it.public_repos.toString()
                     Glide.with(this@DetailUser)
                         .load(it.avatar_url)
                         .transition(DrawableTransitionOptions.withCrossFade())
@@ -47,5 +44,8 @@ class DetailUser : AppCompatActivity() {
             viewPager.adapter = sectionPagerAdapter
             tabs.setupWithViewPager(viewPager)
         }
+    }
+    companion object{
+        const val EXTRA_USERNAME = "extra_username"
     }
 }

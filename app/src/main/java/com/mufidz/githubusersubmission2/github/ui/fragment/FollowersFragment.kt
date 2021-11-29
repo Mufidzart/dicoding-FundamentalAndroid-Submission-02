@@ -53,10 +53,6 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
     }
 
     private fun showLoading(state: Boolean) {
-        if (state){
-            binding.progressBar.visibility = ProgressBar.VISIBLE
-        } else {
-            binding.progressBar.visibility = ProgressBar.GONE
-        }
+        binding.progressBar.visibility = if (state) ProgressBar.VISIBLE else ProgressBar.GONE
     }
 }

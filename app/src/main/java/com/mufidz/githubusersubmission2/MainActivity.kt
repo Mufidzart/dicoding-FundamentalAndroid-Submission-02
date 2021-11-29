@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         adapter = GithubUserAdapter()
-        adapter.notifyDataSetChanged()
         adapter.setOnItemClickCallback(object : GithubUserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: UserGitHub) {
                 Intent(this@MainActivity, DetailUser::class.java).also {
@@ -70,10 +69,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoading(state: Boolean) {
-        if (state){
-            binding.progressBar.visibility = ProgressBar.VISIBLE
-        } else {
-            binding.progressBar.visibility = ProgressBar.GONE
-        }
+        binding.progressBar.visibility = if (state) ProgressBar.VISIBLE else ProgressBar.GONE
     }
 }
